@@ -1,0 +1,58 @@
+<app-header></app-header>
+
+<body>
+    <div class="form-container">
+      <h2>Depósito a Plazo Fijo 
+      </h2>
+      <form id="orderForm" [formGroup]="orderForm">       
+        <div class="form-group">
+            <label for="capital">Capital</label>
+            <input type="number" class="form-control" formControlName="capital" placeholder="Ingrese el monto de dinero(capital)">
+          </div>
+          
+        <div class="form-group">
+          <label for="time">Tiempo</label>
+          <input type="number" class="form-control" formControlName="time" placeholder="Ingrese Tiempo (en años)">
+        </div>
+        
+        <div class="form-group">
+          <button type="button" class="btn-submit" (click)="submitForm()">Calcular</button>
+          <br>
+          <button type="button" class="btn-clear" (click)="clearForm()">Limpiar</button>
+        </div>
+        
+      </form>
+      
+    </div>
+    
+      
+
+   <!-- Tabla -->
+   <div class="table-container">
+    <h2>Detalles de Cálculos de Interés</h2>
+    <div class="table-scrollable">
+      <table>
+        <thead>
+          <tr>
+            <th>Capital</th>
+            <th>Tiempo (Años)</th>
+            <th>Interés</th>
+            <th>Monto Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let calc of calculations">
+            <td>{{ calc.capital }}</td>
+            <td>{{ calc.time }}</td>
+            <td>{{ calc.interest }}</td>
+            <td>{{ calc.totalAmount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    
+</body>
+
+<app-footer></app-footer>

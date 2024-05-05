@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+<body>
+  <div class="form-container">
+    <h2>Ejercicio 2</h2>
+    <h3>Poblacion en Bolivia</h3>
+    <form id="orderForm" [formGroup]="orderForm">
+      <div class="form-group">
+        <label for="anios">Años:</label>
+        <input type="number" id="anios" formControlName="anios" />
+        <label for="pob">Poblacion Inicial:</label>
+        <input type="number" id="pob" formControlName="pob" />
+        <label for="tasaN">Tasa de Natalidad:</label>
+        <input type="number" id="tasaN" formControlName="tasaN" />
+        <label for="tasaM">Tasa de Mortalidad:</label>
+        <input type="number" id="tasaM" formControlName="tasaM" />
+
+
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn-submit" (click)="submitForm()">Generar</button>
+        <br>
+        <button type="button" class="btn-clear" (click)="clearForm()">Limpiar</button>
+      </div>
+    </form>
+    
+  </div>
+
+    <!-- Tabla -->
+    <div class="table-container">
+      <h2>Detalles Calculo población</h2>
+      <div class="table-scrollable">
+        <table>
+          <thead>
+            <tr>
+              <th>Años</th>
+              <th>Poblacion Inicial</th>
+              <th>Tasa de Natalidad</th>
+              <th>Tasa de Mortalidad</th>
+              <th>Poblacion Final</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let calc of calculations">
+              <td>{{ calc.anios }}</td>
+              <td>{{ calc.pob }}</td>
+              <td>{{ calc.tasaN }}</td>
+              <td>{{ calc.tasaM }}</td>
+              <td>{{ calc.pobF }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    
+    
+</body>
+
+<app-footer></app-footer>

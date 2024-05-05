@@ -1,0 +1,108 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /*background-image: url('/assets/home1.jpg');*/
+    background-color: #333;
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #AFD3E2;
+    cursor: pointer;
+  }
+  
+  .btn-submit:hover {
+    background-color: #19A7CE;
+  }
+  .custom-confirm-button {
+    background-color: #19A7CE !important;
+  }
+  
+  .custom-icon {
+    font-size: 40px !important;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  .table-scrollable {
+    max-height: 400px; 
+    overflow-y: auto;
+    display: block;
+  }
+  
+  /* ./pedidos.component.css */
+  .btn-clear {
+    background-color: #FF6969; /* Color rojo */
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    
+    cursor: pointer;
+  }
+  
+  .btn-clear:hover {
+    background-color: #da190b; /* Color rojo oscuro al pasar el mouse */
+  }
+  

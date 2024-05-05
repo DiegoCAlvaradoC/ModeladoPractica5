@@ -1,0 +1,71 @@
+<app-header></app-header>
+
+<body>
+  <div class="form-container">
+    <h2>Ejercicio 4</h2>
+    <form id="orderForm" [formGroup]="orderForm">
+      <!-- Se eliminó la entrada para número de simulaciones -->
+      <div class="form-group">
+        <label for="numJuegos">Número de juegos</label>
+        <input type="number" class="form-control" formControlName="numJuegos" placeholder="Ingrese el número de juegos">
+      </div>
+      <div class="form-group">
+        <label for="costoJuego">Costo por Juego</label>
+        <input type="number" class="form-control" formControlName="costoJuego" placeholder="Ingrese el costo por juego">
+      </div>
+      <div class="form-group">
+        <label for="gananciaJugador">Ganancia del Jugador si Gana</label>
+        <input type="number" class="form-control" formControlName="gananciaJugador" placeholder="Ingrese la ganancia del jugador si gana">
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn-submit" (click)="submitForm()">Generar</button>
+        <br>
+        <button type="button" class="btn-clear" (click)="clearForm()">Limpiar</button>
+      </div>
+    </form>
+    
+  </div>
+
+
+    <!-- Tabla -->
+    <<div class="table-container" *ngIf="gameResults.length > 0">
+      <h2>Resultados del Juego  de Dados</h2>
+      <div class="table-scrollable">
+      <fieldset>
+        <legend>Resultados</legend>
+        <div class="summary">
+          <p><strong>Ganó la mesa:</strong> {{ houseWins }} veces</p>
+          <p><strong>Ganó el apostador:</strong> {{ playerWins }} veces</p>
+          <p><strong>Ingreso total de la mesa:</strong> {{ totalHouseGain }} Bs.</p>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Lanzamiento</th>
+              <th>Dado 1</th>
+              <th>Dado 2</th>
+              <th>Suma</th>
+              <th>Ganancia/Pérdida</th>
+              <th>Total Acumulado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of gameResults; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ result.die1 }}</td>
+              <td>{{ result.die2 }}</td>
+              <td>{{ result.sum }}</td>
+              <td>{{ result.gainLoss }}</td>
+              <td>{{ result.totalAccumulated }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </div>
+    </div>
+
+    
+    
+</body>
+
+<app-footer></app-footer>

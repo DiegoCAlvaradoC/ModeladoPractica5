@@ -1,0 +1,88 @@
+<app-header></app-header>
+
+<body>
+<div class="form-container">
+  <h2>Simulación de Tienda de Azúcar</h2>
+  <form [formGroup]="orderForm">
+    <div class="form-group">
+      <label for="simulationDays">Número de días para la simulación:</label>
+      <input type="number" class="form-control" formControlName="simulationDays" placeholder="Ingrese el número de días">
+    </div>
+    <div class="form-group">
+      <label for="storageCapacity">Capacidad de almacenamiento (Kg):</label>
+      <input type="number" class="form-control" formControlName="storageCapacity" placeholder="Capacidad de almacenamiento">
+    </div>
+    <div class="form-group">
+      <label for="orderCost">Costo de reorden:</label>
+      <input type="number" class="form-control" formControlName="orderCost" placeholder="Costo de reorden">
+    </div>
+    <div class="form-group">
+      <label for="inventoryCostPerKg">Costo de inventario por Kg:</label>
+      <input type="number" class="form-control" formControlName="inventoryCostPerKg" placeholder="Costo de inventario por Kg">
+    </div>
+    <div class="form-group">
+      <label for="acquisitionCostPerKg">Costo de adquisición por Kg:</label>
+      <input type="number" class="form-control" formControlName="acquisitionCostPerKg" placeholder="Costo de adquisición por Kg">
+    </div>
+    <div class="form-group">
+      <label for="salePricePerKg">Precio de venta por Kg:</label>
+      <input type="number" class="form-control" formControlName="salePricePerKg" placeholder="Precio de venta por Kg">
+    </div>
+    
+    <div class="form-group">
+      <label for="reviewPeriod">Período de revisión /control(días):</label>
+      <input type="number" class="form-control" formControlName="reviewPeriod" placeholder="Período de revisión">
+    </div>
+    
+    <div class="form-group">
+      <button type="button" class="btn-submit" (click)="simulateStore()">Simular</button>
+      <button type="button" class="btn-clear" (click)="orderForm.reset()">Limpiar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Tabla de Resultados de la Simulación -->
+<div class="table-container" *ngIf="simulationResults.length > 0">
+  <h2>Resultados de la Simulación</h2>
+  <div class="card-container">
+    <div class="card">
+      <h3>Resumen de la Simulación</h3>
+      <p><strong>Total de Costos:</strong> {{ totalCosts }} Bs</p>
+      <p><strong>Total de Ganancias:</strong> {{ totalGains }} Bs</p>
+      <p><strong>Demandas no satisfechas:</strong> {{ totalUnmetDemand }}</p>
+    </div>
+  </div>
+  <div class="table-scrollable">
+    <fieldset>
+      <legend>Detalle Diario</legend>
+      <table>
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Inventario Inicial</th>
+            <th>Demanda</th>
+            <th>Inventario Final</th>
+            <th>Demanda No Satisfecha</th>
+            <th>Costo de Pedido</th>
+            <th>Costo de Inventario</th>
+            <th>Ganancia Neta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of simulationResults; let i = index">
+            <td>{{ result.day }}</td>
+            <td>{{ result.initialInventory }}</td>
+            <td>{{ result.demand }}</td>
+            <td>{{ result.finalInventory }}</td>
+            <td>{{ result.unmetDemand }}</td>
+            <td>{{ result.orderingCost }}</td>
+            <td>{{ result.inventoryCost }}</td>
+            <td>{{ result.netGain }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+  </div>
+</div>
+
+</body>

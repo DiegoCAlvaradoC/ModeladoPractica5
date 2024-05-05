@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div class="inventory-container">
+  <h2>Lista de Pacientes</h2>
+  
+  <div class="add-patient-container">
+    <h3>{{ editMode ? 'Editar Paciente' : 'Agregar Paciente' }}</h3>
+    <form (submit)="editMode ? updatePatient() : addPatient($event)">
+      <div class="form-group">
+        <label for="patientCI">CI</label>
+        <input type="text" class="form-control" id="patientCI" name="patientCI" [(ngModel)]="newPatient.ci" required>
+      </div>
+      <div class="form-group">
+        <label for="patientName">Nombre</label>
+        <input type="text" class="form-control" id="patientName" name="patientName" [(ngModel)]="newPatient.nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="patientBloodType">Tipo Sangre</label>
+        <input type="text" class="form-control" id="patientBloodType" name="patientBloodType" [(ngModel)]="newPatient.tipoSangre" required>
+      </div>
+      <br><br>
+
+      <button type="submit" class="btn-submit">{{ editMode ? 'Actualizar' : 'Agregar' }}</button>
+      <button *ngIf="editMode" (click)="cancelEdit()" class="btn-cancel">Cancelar</button>
+    </form>
+  </div>
+
+  <br><br><br>
+  
+  <div class="patient-list-container">
+    <div class="patient-card" *ngFor="let patient of patients; let i = index">
+      <h4>{{ patient.nombre }}</h4>
+      <p>{{ patient.ci }}</p>
+      <p>{{ patient.tipoSangre }}</p>
+      <button class="btn-delete" (click)="deletePatient(patient)">Eliminar</button>
+    </div>
+  </div>
+  <br><br><br><br>
+  <div class="patient-list-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">CI</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Tipo de Sangre</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ patient.ci }}</td>
+          <td>{{ patient.nombre }}</td>
+          <td>{{ patient.tipoSangre }}</td>
+          <td>
+
+            <button class="btn-delete" (click)="deletePatient(patient)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+  <br><br><br>
+</div>
+<app-footer></app-footer>

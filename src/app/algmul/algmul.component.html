@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<body>
+  <div class="form-container">
+    <h2>Ejercicio 3</h2>
+    <form id="orderForm" [formGroup]="orderForm">
+      <div class="form-group">
+        <label for="anosDeUso">Numero de iteraciones</label>
+        <input type="number" class="form-control" formControlName="numIteraciones" placeholder="Ingrese el número de iteraciones">
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn-submit" (click)="submitForm()">Generar</button>
+        <br>
+        <button type="button" class="btn-clear" (click)="clearForm()">Limpiar</button>
+      </div>
+    </form>
+  </div>
+
+    <!-- Tabla -->
+    <div class="table-container">
+      <h2></h2>
+      <div class="table-scrollable">
+        <div class="simulation-results">
+
+          <p *ngIf="bestSolution">
+              x1 = {{ bestSolution[0] }} <br>
+              x2 = {{ bestSolution[1] }} <br>
+              x3 = {{ bestSolution[2] }} <br>
+              Valor Máximo para Z = {{ Z }} <br>
+              Mejor solución encontrada en la iteración: {{ iterationBestSolution ? iterationBestSolution + 1 : 'N/A' }}
+              Se hicieron {{ NUM_ITERATIONS }} iteraciones.
+              Formula de Z = 2x1 + 3x2 - x3
+          </p>
+          <p *ngIf="!bestSolution">
+              No se encontró una solución factible en las iteraciones realizadas.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Iteración</th>
+                <th>x1</th>
+                <th>x2</th>
+                <th>x3</th>
+
+                <th>Z</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let calc of calculations">
+                <td>{{ calc.iteracion }}</td>
+                <td>{{ calc.x1 }}</td>
+                <td>{{ calc.x2 }}</td>
+                <td>{{ calc.x2 }}</td>
+                <td>{{ calc.Z }}</td>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+
+    
+    
+</body>
+
+<app-footer></app-footer>

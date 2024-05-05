@@ -1,0 +1,71 @@
+<app-header></app-header>
+
+<body>
+  <div class="form-container">
+    <h2>Ejercicio 5 Llegada Clientes</h2>
+    <form [formGroup]="orderForm">
+      
+      <div class="form-group">
+        <label for="maxHours">Número máximo de horas:</label>
+        <input type="number" class="form-control" formControlName="hours" placeholder="Ingrese el número máximo de horas">
+      </div>
+      <div class="form-group">
+        <label for="itemPurchasePrice">Costo de compra por artículo:</label>
+        <input type="number" class="form-control" formControlName="itemPurchasePrice" placeholder="Ingrese el costo de compra por artículo">
+      </div>
+      <div class="form-group">
+        <label for="dailyCost">Costo fijo por día:</label>
+        <input type="number" class="form-control" formControlName="dailyCost" placeholder="Ingrese el costo fijo por día">
+      </div>
+      <div class="form-group">
+        <label for="itemSalePrice">Precio de venta por artículo:</label>
+        <input type="number" class="form-control" formControlName="itemSalePrice" placeholder="Ingrese el precio de venta por artículo">
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn-submit" (click)="submitForm()">Generar</button>
+        <button type="button" class="btn-clear" (click)="clearForm()">Limpiar</button>
+      </div>
+    </form>
+    
+  </div>
+
+  <!-- Tabla -->
+  <div class="table-container" *ngIf="simulationResults.length > 0">
+    <h2>Resultados de la Simulación</h2>
+    <div class="card-container" *ngIf="totalNetGain !== null">
+        <h3>Resultados Totales</h3>
+        <div class="card">
+          <p>Ganancia Neta Total: {{ totalNetGain }} Bs</p>
+          <p>Cantidad Promedio de Ventas por Día: {{ averageItemsSold }} Artículos</p>
+        </div>
+      </div>
+    <div class="table-scrollable">
+      <fieldset>
+        <legend>Resultados</legend>
+        <table>
+          <thead>
+            <tr>
+              <th>Simulación</th>
+              <th>Total Clientes</th>
+              <th>Clientes Compradores</th>
+              <th>Total Artículos Vendidos</th>
+              <th>Ganancia Neta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of simulationResults; let i = index">
+                <td>{{ i + 1 }}</td>
+              <td>{{ result.totalCustomers }}</td>
+              <td>{{ result.buyingCustomers }}</td>
+              <td>{{ result.totalItemsSold }}</td>
+              <td>{{ result.netGain }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </div>
+  </div>
+
+</body>
+
+<app-footer></app-footer>

@@ -1,0 +1,99 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.inventory-container {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.app-footer {
+  flex-shrink: 0;
+  width: 100%;
+}
+.product-card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #AFD3E2;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #19A7CE;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.btn-edit,
+.btn-delete {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #007bff;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+  opacity: 0.8;
+}.product-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  width: 100%;
+}
