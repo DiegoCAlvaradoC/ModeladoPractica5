@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 interface SimulationResult {
   totalCustomers: number;
   buyingCustomers: number;
@@ -23,6 +24,7 @@ export class Ej5Component implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.orderForm = this.fb.group({
+      numSimulaciones: ['', [Validators.required, Validators.min(1)]], // Number of days to simulate
       hours: ['', [Validators.required, Validators.min(1)]], // The number of hours for the simulation
       itemPurchasePrice: ['', [Validators.required, Validators.min(0)]], // Cost of the item
       dailyCost: ['', [Validators.required, Validators.min(0)]], // Daily fixed cost
@@ -86,6 +88,7 @@ export class Ej5Component implements OnInit {
 
   submitForm(): void {
     if (this.orderForm.valid) {
+      const dias = this.orderForm.get('numSimulaciones')!.value;
       const hours = this.orderForm.get('hours')!.value;
       const itemPurchasePrice = this.orderForm.get('itemPurchasePrice')!.value;
       const dailyCost = this.orderForm.get('dailyCost')!.value;
@@ -93,11 +96,11 @@ export class Ej5Component implements OnInit {
   
       this.clearForm();
   
-      for (let i = 0; i < hours; i++) { // "hours" ahora representa la cantidad de días a simular
+      for (let i = 0; i < dias; i++) { // "hours" ahora representa la cantidad de días a simular
         this.simulateDay(itemPurchasePrice, dailyCost, itemSalePrice);
       }
   
-      this.averageItemsSold = this.totalItemsSold / hours; // Dividimos entre la cantidad de días simulados
+      this.averageItemsSold = this.totalItemsSold / dias; // Dividimos entre la cantidad de días simulados
     } else {
       this.showAlert('Ingrese todos los campos requeridos y asegúrese de que los valores sean válidos (mayores a 0).');
     }

@@ -14,6 +14,7 @@ export class PedidosComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.orderForm = this.fb.group({
+      inicial: [''],
       anios: [''],
       tasaN: [''],
       tasaM: [''],
@@ -34,17 +35,20 @@ export class PedidosComponent implements OnInit {
         const pob= this.calculations[i].pobF;
         const tasaN = this.calculations[i].tasaN;
         const tasaM = this.calculations[i].tasaM;
+        const anios = this.calculations[i].anios+1;
         const pobF = Math.round((pob + tasaN*pob) - tasaM*pob);
         
-        this.calculations.push({ pob, anios: i+1, tasaN, tasaM, pobF});
+        this.calculations.push({ pob, anios, tasaN, tasaM, pobF});
     }
   }
   submitForm() {
     const formValue = this.orderForm.value;
+    const inicial = formValue.inicial;
     const pob = formValue.pob;
     const anios = formValue.anios;
     const tasaN = formValue.tasaN;
     const tasaM = formValue.tasaM;
+
     console.log(pob, anios, tasaN, tasaM);
     if (!anios || !tasaN || !tasaM || !pob) {
       Swal.fire({
@@ -80,7 +84,7 @@ export class PedidosComponent implements OnInit {
     }
     // Limpiamos el array calculations
     this.calculations = [];
-    this.calculations.push({ pob, anios:0, tasaN, tasaM, pobF: (pob + tasaN*pob) - tasaM*pob});
+    this.calculations.push({ pob, anios:inicial, tasaN, tasaM, pobF: (pob + tasaN*pob) - tasaM*pob});
     this.NUM_ITERATIONS = anios;  // Actualizamos la cantidad de iteraciones
     this.Simulation();
     Swal.fire({

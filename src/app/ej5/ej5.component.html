@@ -4,7 +4,10 @@
   <div class="form-container">
     <h2>Ejercicio 5 Llegada Clientes</h2>
     <form [formGroup]="orderForm">
-      
+      <div class="form-group">
+        <label for="numSimulaciones">Número de Dias:</label>
+        <input type="number" class="form-control" formControlName="numSimulaciones" placeholder="Ingrese el número de simulaciones">
+      </div>
       <div class="form-group">
         <label for="maxHours">Número máximo de horas:</label>
         <input type="number" class="form-control" formControlName="hours" placeholder="Ingrese el número máximo de horas">

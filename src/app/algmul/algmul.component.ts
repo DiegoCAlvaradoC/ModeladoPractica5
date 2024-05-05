@@ -44,8 +44,8 @@ export class AlgmulComponent implements OnInit {
     for (let i = 0; i < this.NUM_ITERATIONS; i++) {
       let rx1c = this.generate_rx();
       let rx2c = this.generate_rx();
-      let xc1 = Math.round(10 * rx1c); // Genera aleatorio entre 0 y 1000
-      let xc2 = Math.round(100 * rx2c); // Genera  aleatorio entre 5 y 100
+      let xc1 = Math.round(10 * rx1c); // Genera aleatorio entre 0 y 10
+      let xc2 = Math.round(100 * rx2c); // Genera  aleatorio entre 0 y 100
 
       //let xc1 = 22; // Genera aleatorio entre 0 y 1000
       //let xc2 = 23;

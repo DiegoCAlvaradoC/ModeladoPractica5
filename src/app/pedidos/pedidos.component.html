@@ -6,7 +6,9 @@
     <h3>Poblacion en Bolivia</h3>
     <form id="orderForm" [formGroup]="orderForm">
       <div class="form-group">
-        <label for="anios">Años:</label>
+        <label for="anios">Año inicial:</label>
+        <input type="number" id="inicial" formControlName="inicial" />
+        <label for="anios">Cantidad de años:</label>
         <input type="number" id="anios" formControlName="anios" />
         <label for="pob">Poblacion Inicial:</label>
         <input type="number" id="pob" formControlName="pob" />
